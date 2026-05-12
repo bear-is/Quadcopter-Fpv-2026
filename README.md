@@ -6,13 +6,15 @@
 
 ## What We're Building
 
-A compact, high-speed FPV quadcopter inspired by the Peregrine 2 — the drone that broke the Guinness World Record at ~300mph. Our version is scaled down, 3D printed, and built entirely by our team: custom SolidWorks frame, hand-soldered electronics stack, and tuned Betaflight firmware.
+A compact, high-speed FPV quadcopter 3D printed, and built entirely by our team: custom SolidWorks frame, hand-soldered electronics stack, and tuned Betaflight firmware.
 
 The goal is a drone that:
 - Flies nearly horizontal at full throttle
 - Looks great on FPV footage
 - Is small, light, and relatively simple to build
 - Is fully documented so anyone on the team can pick up where someone left off
+
+## ***This is just a starter roadmap everything here is subject to change***
 
 ---
 
@@ -35,30 +37,18 @@ The goal is a drone that:
 ```
 /peregrine
 ├── /cad                  ← SolidWorks parts + assemblies + exported STLs
-│   ├── Body_TopShell.SLDPRT
-│   ├── Body_BottomShell.SLDPRT
-│   ├── Arm.SLDPRT
-│   ├── MotorMount.SLDPRT
-│   ├── TailFin.SLDPRT
-│   ├── NoseCone.SLDPRT
-│   └── SpeedQuad_v1.SLDASM
 ├── /stl                  ← Print-ready STL exports (named with version)
 ├── /firmware             ← Betaflight config dumps, ELRS bind phrases, BLHeli settings
 ├── /software             ← Python scripts, MAVLink/DroneKit, SITL configs
 ├── /docs                 ← Wiring diagrams, BOM, build notes, tuning logs
 ├── /media                ← Flight footage, photos, renders
-└── README.md
+└── README.md             ← Roadmap + documentation
 ```
 
-> **Note:** SolidWorks and STL files are large binaries. The repo uses **Git LFS** — make sure you have it installed before cloning.
-> ```bash
-> git lfs install
-> git clone <repo-url>
-> ```
-
+> **Note:** SolidWorks and STL files are large binaries. The repo uses **Git LFS**
 ---
 
-## Electronics Stack (Target Spec)
+## Electronics Stack (Target Spec / tbd)
 
 | Component | Part | Notes |
 |---|---|---|
@@ -68,13 +58,13 @@ The goal is a drone that:
 | Receiver | ExpressLRS (ELRS) 2.4GHz | Match TX firmware version |
 | Radio | RadioMaster Boxer or TX16S | ELRS module required |
 | VTX | 200mW 5.8GHz | MSP OSD enabled |
-| Camera | Runcam Nano / Thumb Pro | Nose-mounted, 10–15° down tilt |
-| Battery | 4S 650–850mAh LiPo | Target AUW under 250g |
-| Props | 4" tri-blade (HQ or Gemfan) | Check motor direction before flying |
+| Camera |  |
+| Battery |  |
+| Props | 5" tri-blade (HQ or Gemfan) | Check motor direction before flying |
 
 ---
 
-## Software & Tools You'll Need
+## Software & Tools
 
 ### Everyone
 - [Git](https://git-scm.com/) + [Git LFS](https://git-lfs.com/)
@@ -94,27 +84,8 @@ The goal is a drone that:
 
 ---
 
-## Frame Design Overview
-
-The airframe is inspired by the Peregrine 2's bullet-style fuselage. Key design decisions:
-
-- **Lofted rectangle body** — narrow nose sketch lofted to wider mid-body, tapering to tail. Smooth, aerodynamic, and looks cinematic in footage.
-- **Nose cone** — forward camera mount with slight downward tilt (10–15°) for a horizon-skimming FPV view at speed.
-- **Tail fin** — single vertical stabilizer for straight-line stability at high speed.
-- **Two-shell construction** — top and bottom halves snap/screw together for easy access and repair.
-- **Motors slightly raised** — props visible in side profile footage.
-
-**Print settings:**
-- Material: **PETG** (not PLA — too brittle for crashes)
-- Infill: 40%+ on arms and motor mounts
-- Wall count: 4 perimeters minimum on structural parts
-- Main plate: 1.5mm carbon fiber sheet (laser/CNC cut from SolidWorks DXF export)
-
----
-
 ## Build Order
 
-Follow this sequence — skipping steps causes pain later.
 
 1. **Finalize CAD** — lock in motor spacing, then design everything else around it
 2. **Export STLs + DXF** for carbon plate, add to `/stl`
@@ -125,9 +96,7 @@ Follow this sequence — skipping steps causes pain later.
 7. **Assemble frame** — wire everything through the arms, no exposed cables
 8. **Betaflight config** — ports, protocols, motor directions, failsafe
 9. **Props-off arm test** — verify all motors spin correct direction
-10. **First hover** — in a large open space, low altitude, angle mode
-11. **PID tune** — use Blackbox logs, don't guess
-12. **Speed runs** — only after hover is dialed in
+
 
 ---
 
@@ -179,8 +148,6 @@ git push origin feature/your-name-description
 - [BLHeli_32 manual](https://github.com/bitdump/BLHeli/blob/master/BLHeli_32%20ARM/BLHeli_32%20manual%20ARM%20Rev32.x.pdf)
 - [ArduPilot SITL setup](https://ardupilot.org/dev/docs/sitl-simulator-software-in-the-loop.html)
 - [Joshua Bardwell — Betaflight tuning (YouTube)](https://www.youtube.com/@JoshuaBardwell)
-
----
 
 ---
 
